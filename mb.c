@@ -29,6 +29,6 @@ int main(int argc, char **argv)
       fwrite(x, sizeof(x[0]), sizeof(x)/sizeof(x[0]), logfile);
       fflush(logfile);
     }
-    sleep (2);
+    sleep (3);
   }
 }
