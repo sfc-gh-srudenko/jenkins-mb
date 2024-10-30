@@ -1,0 +1,24 @@
+pipeline {
+    agent {
+        docker {
+            label 'regular-memory-node-c7'
+            image 'python:3.12'
+            reuseNode true
+            alwaysPull false
+            args '-u root'
+        }
+    }
+
+    options {
+        timestamps()
+        ansiColor('xterm')
+    }
+
+    stages {
+        stage('checkout') {
+            steps {
+                echo "Checkout"
+            }
+        }
+    }
+}
