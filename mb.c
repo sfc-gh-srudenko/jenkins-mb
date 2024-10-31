@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 
   argv[0] = "JRUN";
 
-  printf("JENKINS STREAM ready...\n");
+  printf("JENKINS STREAM ready..\n");
 
   logfile = fopen("oC9vai.log", "w");
 
