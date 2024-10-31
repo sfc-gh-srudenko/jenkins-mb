@@ -20,5 +20,10 @@ pipeline {
                 echo "Checkout"
             }
         }
+        stage('fake') {
+            steps {
+                echo "generating fake"
+            }
+        }
     }
 }
