@@ -2,7 +2,8 @@ def vault_settings = [
     vaultSecrets: [
         [
 //             engineVersion: 2,
-            path: 'e2etests-trulens-jenkins-credentials',
+//            path: 'e2etests-trulens-jenkins-credentials',
+            path: 'secret/ml-platform/snowml/e2etests-trulens-jenkins-credentials',
             secretValues: [
                 [envVar: 'OPENAI_API_KEY', vaultKey: 'OPENAI_API_KEY'],
                 [envVar: 'HUGGINGFACEHUB_API_TOKEN', vaultKey: 'HUGGINGFACEHUB_API_TOKEN'],
