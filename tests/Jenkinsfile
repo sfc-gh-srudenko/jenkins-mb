@@ -44,8 +44,10 @@ pipeline {
             }
         }
         stage('vault test') {
-            withVault(vault_settings) {
-                echo "USER ${SNOWFLAKE_USER}"
+            steps {
+                withVault(vault_settings) {
+                    echo "USER ${SNOWFLAKE_USER}"
+                }
             }
         }
     }
