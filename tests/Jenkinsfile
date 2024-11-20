@@ -1,3 +1,26 @@
+def vault_settings = [
+    vaultSecrets: [
+        [
+//             engineVersion: 2,
+            path: 'e2etests-trulens-jenkins-credentials',
+            secretValues: [
+                [envVar: 'OPENAI_API_KEY', vaultKey: 'OPENAI_API_KEY'],
+                [envVar: 'HUGGINGFACEHUB_API_TOKEN', vaultKey: 'HUGGINGFACEHUB_API_TOKEN'],
+                [envVar: 'HUGGINGFACE_API_KEY', vaultKey: 'HUGGINGFACE_API_KEY'],
+                [envVar: 'PINECONE_API_KEY', vaultKey: 'PINECONE_API_KEY'],
+                [envVar: 'PINECONE_ENV', vaultKey: 'PINECONE_ENV'],
+                [envVar: 'SNOWFLAKE_ACCOUNT', vaultKey: 'SNOWFLAKE_ACCOUNT'],
+                [envVar: 'SNOWFLAKE_DATABASE', vaultKey: 'SNOWFLAKE_DATABASE'],
+                [envVar: 'SNOWFLAKE_ROLE', vaultKey: 'SNOWFLAKE_ROLE'],
+                [envVar: 'SNOWFLAKE_SCHEMA', vaultKey: 'SNOWFLAKE_SCHEMA'],
+                [envVar: 'SNOWFLAKE_USER', vaultKey: 'SNOWFLAKE_USER'],
+                [envVar: 'SNOWFLAKE_USER_PASSWORD', vaultKey: 'SNOWFLAKE_USER_PASSWORD'],
+                [envVar: 'SNOWFLAKE_WAREHOUSE', vaultKey: 'SNOWFLAKE_WAREHOUSE']
+            ]
+        ]
+    ]
+]
+
 pipeline {
     agent {
         docker {
@@ -18,6 +41,11 @@ pipeline {
         stage('checkout') {
             steps {
                 echo "Checkout"
+            }
+        }
+        stage('vault test') {
+            withVault(vault_settings) {
+                echo "USER ${SNOWFLAKE_USER}"
             }
         }
     }
